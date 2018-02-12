@@ -1,4 +1,5 @@
-const d3 = Object.assign({}, require('d3-array'), require('d3-collection'));
+// const d3 = Object.assign({}, require('d3-array'), require('d3-collection'));
+var d3 = require('d3')
 var jsonData = require('../public/master.json');
 
 var express = require('express');
@@ -58,6 +59,8 @@ router.get('/', function(req, res) {
 		return r;
 	}, []);
 
+	console.log(sortedData);
+
 	const nested2016 = d3
 	.nest()
 	.key(d => d.location)
@@ -67,35 +70,35 @@ router.get('/', function(req, res) {
 	.rollup(d => d3.sum(d, d => d.value))
 	.entries(sortedData);
 
-	console.log(nested2016);
+	// console.log(nested2016);
 
-	const tree2016 = [
-		{
-			name: 2016,
-			children: nested2016.values.map(location => {
-				return {
-					name: location.key,
-					children: location.values.map(pillar => {
-						return {
-							name: pillar.key,
-							children: pillar.values.map(sector => {
-								return {
-									name: sector.key,
-									children: sector.values.map(project => {
-										return {
-											name: project.key,
-											value: project.value,
-										};
-									}),
-								};
-							}),
-						};
-					}),
-				};
-			})
-		}
-	];
+	// const tree2016 = [
+	// 	{
+	// 		name: 2016,
+	// 		children: nested2016.values.map(location => {
+	// 			return {
+	// 				name: location.key,
+	// 				children: location.values.map(pillar => {
+	// 					return {
+	// 						name: pillar.key,
+	// 						children: pillar.values.map(sector => {
+	// 							return {
+	// 								name: sector.key,
+	// 								children: sector.values.map(project => {
+	// 									return {
+	// 										name: project.key,
+	// 										value: project.value,
+	// 									};
+	// 								}),
+	// 							};
+	// 						}),
+	// 					};
+	// 				}),
+	// 			};
+	// 		})
+	// 	}
+	// ];
 
-	res.json(tree2016);
+	res.json(sortedData[0]);
 });
 module.exports = router;
