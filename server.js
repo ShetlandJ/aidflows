@@ -13,14 +13,8 @@ app.use(require('./controllers/TreeMap2016'));
 app.use(require('./controllers/TreeMap2017'));
 app.use(require('./controllers/TreeMap2018'));
 
-
-// app.use(express.static("client/build"));
-// app.use(require("./controllers/index"));
-
 app.get("/", function(req, res){
-  // res.send(treeMap.returnHello
-  // var newData = treeClass.cleanTree(jsonData)
-  // res.json(newData);
+  res.json({"Hello": "World"})
 });
 
 app.get("/pooled", function(req, res){

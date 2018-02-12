@@ -24,7 +24,6 @@ router.get('/', function(req, res) {
 			project: k['Project title'],
 			pillar: k['NDP Pillar'],
 			sector: k['Primary Sector'],
-			// disbursements2016: k['2016 Disbursements (USD)'],
 			fgs: k['2016 - FGS'],
 			benadir: k['2016 - Benadir'],
 			galmudug: k['2016 - Galmudug'],
@@ -36,8 +35,6 @@ router.get('/', function(req, res) {
 			unattributed: k['2016 - Unattributed'],
 		};
 	});
-
-	// console.log('nice and tidy map: ', cleanedTree2016);
 
 	// create a new object for each project that has a location-specific value greater than zero.
 	cleanedTree2016.reduce(function(r, o) {
@@ -54,7 +51,6 @@ router.get('/', function(req, res) {
 			});
 		});
 
-		// console.log('brilliant awesome german function: ', r);
 		sortedData.push(r)
 		return r;
 	}, []);
