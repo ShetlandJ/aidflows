@@ -1,7 +1,8 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var treeMap = require("./models/treeMap.js")
+var treeMap = require("./public/master")
+console.log(treeMap);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -9,8 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(require("./controllers/index"));
 
 app.get("/", function(req, res){
-  console.log(treeMap);
-  // res.json(treeMap.returnData())
+  res.json(treeMap);
 });
 
 app.listen(3000, function(){
