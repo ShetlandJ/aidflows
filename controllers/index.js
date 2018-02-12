@@ -10,7 +10,7 @@ router.use('/location', router);
 var result;
 var cleanTree;
 const newData = {};
-var myData = []
+var sortedData = []
 
 router.get('/', function(req, res) {
 	var jsonData = require('../public/master.json');
@@ -54,13 +54,10 @@ router.get('/', function(req, res) {
 		});
 
 		// console.log('brilliant awesome german function: ', r);
-		myData.push(r)
+		sortedData.push(r)
 		return r;
 	}, []);
 
-	// console.log(myData);
-
-	// Russian doll this shit
 	const nested2016 = d3
 	.nest()
 	.key(d => d.location)
@@ -68,40 +65,37 @@ router.get('/', function(req, res) {
 	.key(d => d.sector)
 	.key(d => d.project)
 	.rollup(d => d3.sum(d, d => d.value))
-	.entries(cleanedTree2016);
+	.entries(sortedData);
 
-	// console.log(nested2016);
-	console.log('nested: ', nested2016);
+	console.log(nested2016);
 
-	console.log(myData.length);
+	const tree2016 = [
+		{
+			name: 2016,
+			children: nested2016.values.map(location => {
+				return {
+					name: location.key,
+					children: location.values.map(pillar => {
+						return {
+							name: pillar.key,
+							children: pillar.values.map(sector => {
+								return {
+									name: sector.key,
+									children: sector.values.map(project => {
+										return {
+											name: project.key,
+											value: project.value,
+										};
+									}),
+								};
+							}),
+						};
+					}),
+				};
+			})
+		}
+	];
 
-const tree2016 = [
-	{
-		name: 2016,
-		children: myData.values.map(location => {
-			return {
-				name: location.key,
-				children: location.values.map(pillar => {
-					return {
-						name: pillar.key,
-						children: pillar.values.map(sector => {
-							return {
-								name: sector.key,
-								children: sector.values.map(project => {
-									return {
-										name: project.key,
-										value: project.value,
-									};
-								}),
-							};
-						}),
-					};
-				}),
-			};
-		})
-	}
-];
-
-res.json(newData);
+	res.json(tree2016);
 });
 module.exports = router;
