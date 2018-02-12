@@ -6,7 +6,7 @@ var express = require('express');
 var router = new express.Router();
 var path = require('path');
 
-router.use('/location', router);
+router.use('/2017', router);
 
 var result;
 var cleanTree;
@@ -25,15 +25,15 @@ router.get('/', function(req, res) {
 			pillar: k['NDP Pillar'],
 			sector: k['Primary Sector'],
 			// disbursements2016: k['2016 Disbursements (USD)'],
-			fgs: k['2016 - FGS'],
-			benadir: k['2016 - Benadir'],
-			galmudug: k['2016 - Galmudug'],
-			hiirshabelle: k['2016 - Hiirshabelle'],
-			jubaland: k['2016 - Jubaland'],
-			puntland: k['2016 - Puntland'],
-			southWest: k['2016 - South West'],
-			somaliland: k['2016 - Somaliland'],
-			unattributed: k['2016 - Unattributed'],
+			fgs: k['2017 - FGS'],
+			benadir: k['2017 - Benadir'],
+			galmudug: k['2017 - Galmudug'],
+			hiirshabelle: k['2017 - Hiirshabelle'],
+			jubaland: k['2017 - Jubaland'],
+			puntland: k['2017 - Puntland'],
+			southWest: k['2017 - South West'],
+			somaliland: k['2017 - Somaliland'],
+			unattributed: k['2017 - Unattributed'],
 		};
 	});
 
@@ -59,7 +59,7 @@ router.get('/', function(req, res) {
 		return r;
 	}, []);
 
-	console.log(sortedData);
+	const testDate = sortedData[0]
 
 	const nested2016 = d3
 	.nest()
@@ -68,37 +68,8 @@ router.get('/', function(req, res) {
 	.key(d => d.sector)
 	.key(d => d.project)
 	.rollup(d => d3.sum(d, d => d.value))
-	.entries(sortedData);
+	.entries(testDate);
 
-	// console.log(nested2016);
-
-	// const tree2016 = [
-	// 	{
-	// 		name: 2016,
-	// 		children: nested2016.values.map(location => {
-	// 			return {
-	// 				name: location.key,
-	// 				children: location.values.map(pillar => {
-	// 					return {
-	// 						name: pillar.key,
-	// 						children: pillar.values.map(sector => {
-	// 							return {
-	// 								name: sector.key,
-	// 								children: sector.values.map(project => {
-	// 									return {
-	// 										name: project.key,
-	// 										value: project.value,
-	// 									};
-	// 								}),
-	// 							};
-	// 						}),
-	// 					};
-	// 				}),
-	// 			};
-	// 		})
-	// 	}
-	// ];
-
-	res.json(sortedData[0]);
+	res.json(testDate);
 });
 module.exports = router;

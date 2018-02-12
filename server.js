@@ -2,11 +2,17 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var jsonData = require("./public/master")
-var treeClass = require('./controllers/index')
+var pooled = require("./public/pooled")
+var envelopes = require("./public/envelopes")
+
+var TreeMap2016 = require('./controllers/TreeMap2016')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(require('./controllers'));
+app.use(require('./controllers/TreeMap2016'));
+app.use(require('./controllers/TreeMap2017'));
+app.use(require('./controllers/TreeMap2018'));
+
 
 // app.use(express.static("client/build"));
 // app.use(require("./controllers/index"));
@@ -15,6 +21,14 @@ app.get("/", function(req, res){
   // res.send(treeMap.returnHello
   // var newData = treeClass.cleanTree(jsonData)
   // res.json(newData);
+});
+
+app.get("/pooled", function(req, res){
+  res.json(pooled);
+});
+
+app.get("/envelopes", function(req, res){
+  res.json(envelopes);
 });
 
 app.listen(3000, function(){
