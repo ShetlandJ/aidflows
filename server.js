@@ -25,6 +25,6 @@ app.get("/envelopes", function(req, res){
   res.json(envelopes);
 });
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("listening on " + this.address().port );
 });
