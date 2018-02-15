@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
-var jsonData = require("./public/master")
+var jsonData = require("./public/cleaned-master")
 var pooled = require("./public/pooled")
 var envelopes = require("./public/envelopes")
 

@@ -1,6 +1,6 @@
 // const d3 = Object.assign({}, require('d3-array'), require('d3-collection'));
 var d3 = require('d3')
-var jsonData = require('../public/master.json');
+var jsonData = require('../public/cleaned-master.json');
 
 var express = require('express');
 var router = new express.Router();
@@ -14,7 +14,7 @@ const newData = {};
 var sortedData = []
 
 router.get('/', function(req, res) {
-	var jsonData = require('../public/master.json');
+	var jsonData = require('../public/cleaned-master.json');
 
 	// return only data needed
 	// simplify keys
