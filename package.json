@@ -9,7 +9,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "James Stewart",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
