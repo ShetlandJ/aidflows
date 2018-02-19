@@ -7,15 +7,47 @@ var path = require('path');
 router.use('/location/2016', router);
 
 var valid_place_names = ["FGS", "Benadir", "Galmudug", "Hiirshabelle", "Jubaland", "Puntland", "South West", "Somaliland", "Unattributed"]
-var my_places = []
+var placeArray;
 
 router.get('/', function(req, res) {
 
-  for (var place of valid_place_names) {
-    my_places.push(place)
+
+locationLoop()
+
+  res.json(placeArray);
+});
+
+var locationLoop = function() {
+  for (var location of valid_place_names) {
+    createCountryObject(location)
   }
 
+}
 
-	res.json(my_places);
-});
+var createCountryObject = function(location) {
+  // var total = 0;
+  // var count = 0;
+  placeArray = []
+  var jsonData = require('../public/cleaned-master.json');
+
+  for (var location of valid_place_names) {
+    var total = 0;
+    var count = 0;
+
+    for (var i = 0; i < 770; i++) {
+      if (jsonData[i]["2016"+" - "+location] > 0) {
+        count += 1;
+        total += jsonData[i]["2016"+" - "+location]
+      }
+    }
+    var temp_obj = {
+      "Location: " : location,
+      "Total: " : total,
+      "Count" : count
+
+    }
+    placeArray.push(temp_obj)
+  }
+}
+
 module.exports = router;
