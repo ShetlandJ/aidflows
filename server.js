@@ -9,6 +9,8 @@ var TreeMap2016 = require('./controllers/TreeMap2016')
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(require('./controllers/LocationCounter2016'));
+
 app.use(require('./controllers/TreeMap2016'));
 app.use(require('./controllers/TreeMap2017'));
 app.use(require('./controllers/TreeMap2018'));
