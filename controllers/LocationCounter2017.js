@@ -4,7 +4,7 @@ var express = require('express');
 var router = new express.Router();
 var path = require('path');
 
-router.use('/location/2016', router);
+router.use('/location/2017', router);
 
 var valid_place_names = ["FGS", "Benadir", "Galmudug", "Hiirshabelle", "Jubaland", "Puntland", "South West", "Somaliland", "Unattributed"]
 var placeArray;
@@ -33,7 +33,7 @@ var createCountryObject = function(location) {
   for (var location of valid_place_names) {
     var total = 0;
     var count = 0;
-    var year = "2016"
+    var year = "2017"
 
     for (var i = 0; i < 770; i++) {
       if (jsonData[i][year+" - "+location] > 0) {
