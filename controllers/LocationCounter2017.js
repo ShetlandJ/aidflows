@@ -21,12 +21,9 @@ var locationLoop = function() {
   for (var location of valid_place_names) {
     createCountryObject(location)
   }
-
 }
 
 var createCountryObject = function(location) {
-  // var total = 0;
-  // var count = 0;
   placeArray = []
   var jsonData = require('../public/cleaned-master.json');
 

@@ -21,7 +21,6 @@ var locationLoop = function() {
   for (var location of valid_place_names) {
     createCountryObject(location)
   }
-
 }
 
 var createCountryObject = function(location) {
