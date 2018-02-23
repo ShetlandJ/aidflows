@@ -39,8 +39,8 @@ var createCountryObject = function(location) {
       }
     }
     var temp_obj = {
-      "Location: " : location,
-      "Total: " : total,
+      "Location" : location,
+      "Total" : total,
       "Count" : count
 
     }

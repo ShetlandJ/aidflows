@@ -39,9 +39,9 @@ var createCountryObject = function(location) {
       }
     }
     var temp_obj = {
-      "Location: " : location,
-      "Total: " : total,
-      "Count" : count
+      "Location" : location,
+      "Total" : total,
+      "Count": count
 
     }
     placeArray.push(temp_obj)
