@@ -13,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(require('./controllers/Locations'));
 
-
 app.use(require('./controllers/TreeMap2016'));
 app.use(require('./controllers/TreeMap2017'));
 app.use(require('./controllers/TreeMap2018'));

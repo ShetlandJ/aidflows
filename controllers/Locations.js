@@ -28,7 +28,6 @@ var locationLoop = function() {
 }
 
 var createCountryObject = function(location, year) {
-  // placeArray = []
   var jsonData = require('../public/cleaned-master.json');
 
   var total = 0;

@@ -1,4 +1,3 @@
-// const d3 = Object.assign({}, require('d3-array'), require('d3-collection'));
 var d3 = require('d3')
 var jsonData = require('../public/cleaned-master.json');
 
