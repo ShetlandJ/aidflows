@@ -40,16 +40,15 @@ var createCountryObject = function(location, year) {
       total += jsonData[i][year+" - "+location]
     }
   }
+
+  var totalKey = "Total"+year
+  var countKey = "Count"+year
   temp_obj = {
 
-
-    [year] : {
-      // "Location" : location,
-      "Total" : total,
-      "Count": count
-    }
-
+    [totalKey] : total,
+    [countKey] : count
   }
+
   temp_array.push(temp_obj)
 }
 
