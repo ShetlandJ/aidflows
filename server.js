@@ -17,6 +17,13 @@ app.use(require('./controllers/Locations'));
 app.use(require('./controllers/TreeMap2016'));
 app.use(require('./controllers/TreeMap2017'));
 app.use(require('./controllers/TreeMap2018'));
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://wb-somalia-ssr.herokuapp.com");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.use(cors({
   origin: 'https://wb-somalia-ssr.herokuapp.com',
   credentials: true
