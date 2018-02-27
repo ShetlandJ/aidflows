@@ -4,7 +4,6 @@ var express = require('express');
 var router = new express.Router();
 var path = require('path');
 
-
 router.use('/locations', router);
 
 var valid_place_names = ["FGS", "Benadir", "Galmudug", "Hiirshabelle", "Jubaland", "Puntland", "South West", "Somaliland", "Unattributed"];
