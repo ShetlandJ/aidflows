@@ -5,6 +5,7 @@ var jsonData = require("./public/cleaned-master")
 var pooled = require("./public/pooled")
 var envelopes = require("./public/envelopes")
 var path = require('path')
+var cors = require('cors');
 
 var TreeMap2016 = require('./controllers/TreeMap2016')
 
@@ -16,6 +17,10 @@ app.use(require('./controllers/Locations'));
 app.use(require('./controllers/TreeMap2016'));
 app.use(require('./controllers/TreeMap2017'));
 app.use(require('./controllers/TreeMap2018'));
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
 
 app.get("/routes", function(req, res){
   res.sendFile(path.join(__dirname + '/index.html'));

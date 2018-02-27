@@ -5,3 +5,10 @@ bundle.*
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+*.ca-bundle
+*.crt
+
+*.zip
+
+*.pem
