@@ -18,7 +18,7 @@ app.use(require('./controllers/TreeMap2016'));
 app.use(require('./controllers/TreeMap2017'));
 app.use(require('./controllers/TreeMap2018'));
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://wb-somalia.ssr.herokuapp.com/',
   credentials: true
 }));
 
