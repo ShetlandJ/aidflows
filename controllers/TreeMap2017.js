@@ -5,6 +5,15 @@ var express = require('express');
 var router = new express.Router();
 var path = require('path');
 
+var cors = require('cors');
+
+app.use(cors({
+  origin: 'https://wb-somalia-ssr.herokuapp.com',
+  credentials: true
+}));
+
+
+
 router.use('/2017', router);
 
 var result;
