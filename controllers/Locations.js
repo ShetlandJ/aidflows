@@ -23,7 +23,7 @@ router.get('/', function(req, res) {
      count2017 = 0;
      count2018 = 0;
 
-    yearLoop(location)
+    mo(location)
   }
 
   res.json(placeArray);
