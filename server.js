@@ -16,19 +16,6 @@ app.use(
 	})
 );
 
-// app.use(require('./controllers/Locations'));
-
-// app.use(require('./controllers/TreeMap2016'));
-// app.use(require('./controllers/TreeMap2017'));
-// app.use(require('./controllers/TreeMap2018'));
-
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "https://wb-somalia-ssr.herokuapp.com");
-//   res.header('Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS');
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
-
 var valid_place_names = [
 	'FGS',
 	'Benadir',
@@ -131,6 +118,7 @@ app.get('/2016', function(req, res) {
 				project: o.project,
 				pillar: o.pillar,
 				sector: o.sector,
+				year: 2016
 			});
 		});
 
@@ -179,6 +167,7 @@ app.get('/2017', function(req, res) {
 				project: o.project,
 				pillar: o.pillar,
 				sector: o.sector,
+				year: 2017
 			});
 		});
 
@@ -226,6 +215,7 @@ app.get('/2018', function(req, res) {
 				project: o.project,
 				pillar: o.pillar,
 				sector: o.sector,
+				year: 2018
 			});
 		});
 
