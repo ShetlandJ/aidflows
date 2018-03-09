@@ -99,6 +99,43 @@ app.get('/locations', function(req, res) {
 	res.json(placeArray);
 });
 
+app.get('/master_locations', function(req, res) {
+
+	var masterDataSet = []
+	function locationArray(dataSet) {
+
+		const locations = [
+			'FGS',
+			'Benadir',
+			'Galmudug',
+			'Hiirshabelle',
+			'Jubaland',
+			'Puntland',
+			'South West',
+			'Somaliland',
+		];
+
+		temp_array = []
+		for (var key in dataSet) {
+			for (var location of locations) {
+				if (key.includes(location) && dataSet[key] > 0 && !temp_array.includes(location)) {
+					temp_array.push(location)
+				}
+			}
+		}
+		dataSet.locations = temp_array.toString()
+	}
+
+	function dataSetLoop() {
+		for (var i = 0; i < jsonData.length; i++) {
+			locationArray(jsonData[i]);
+			masterDataSet.push(jsonData[i])
+		}
+	}
+	dataSetLoop()
+	res.json(masterDataSet)
+});
+
 var locationLoop = function() {
 	for (var location of valid_place_names) {
 		createCountryObject(location);
