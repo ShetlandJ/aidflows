@@ -123,7 +123,7 @@ app.get('/master_locations', function(req, res) {
 				}
 			}
 		}
-		dataSet.locations = temp_array.toString()
+		dataSet.locations = temp_array.toString().replace(/,/g, ', ')
 	}
 
 	function dataSetLoop() {
