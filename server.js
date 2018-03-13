@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
 	cors({
-		origin:  ['http://wb-somalia-ssr.herokuapp.com', 'https://wb-somalia-ssr.herokuapp.com', 'http://somaliaaidflows.so/', 'https://somaliaaidflows.so/'],
+		origin:  ['http://wb-somalia-ssr.herokuapp.com', 'https://wb-somalia-ssr.herokuapp.com', 'http://www.somaliaaidflows.so', 'https://www.somaliaaidflows.so', 'http://somaliaaidflows.so', 'https://somaliaaidflows.so'],
 	})
 );
 
